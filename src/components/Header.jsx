@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuth } from "../utils/AuthContext";
 import { FiLogOut } from "react-icons/fi";
-import { Space } from "lucide-react";
 
 function Header() {
   const { user, handleUserLogout } = useAuth();
