@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
 
       const accountDetails = await account.get();
       setUser(accountDetails);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.warn("Register issue ", error);
     }
