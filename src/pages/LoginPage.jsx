@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../utils/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import "../App.css";
+import { IoEye } from "react-icons/io5";
+import { IoEyeOff } from "react-icons/io5";
 
 function LoginPage() {
   const { user, handleUserLogin } = useAuth();
+  const [password, setPassword] = useState(false);
   const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
@@ -17,6 +20,10 @@ function LoginPage() {
       navigate("/");
     }
   }, []);
+
+  const handelShowPassword = () => {
+    setPassword(!password);
+  };
 
   const handleChangeInput = (e) => {
     let name = e.target.name;
@@ -51,12 +58,12 @@ function LoginPage() {
                 />
               </div>
 
-              <div className="field-wrapper flex flex-wrap py-2 px-2 items-center justify-between mx-auto  w-full">
+              <div className="field-wrapper relative flex flex-wrap py-2 px-2 items-center justify-between mx-auto  w-full">
                 <label className="font-semibold uppercase text-white/70  pl-2 pb-2">
                   Password :{" "}
                 </label>
                 <input
-                  type="password"
+                  type={password ? "text" : "password"}
                   name="password"
                   required
                   placeholder="Enter your Password.."
@@ -64,6 +71,12 @@ function LoginPage() {
                   value={credentials.password}
                   onChange={handleChangeInput}
                 />
+                <span
+                  onClick={handelShowPassword}
+                  className="absolute top-12 left-[88%] -translate-x-1 text-white cursor-pointer"
+                >
+                  {password ? <IoEye /> : <IoEyeOff />}
+                </span>
               </div>
 
               <div className="field-wrapper text-right">

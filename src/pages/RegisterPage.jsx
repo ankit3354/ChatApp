@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../utils/AuthContext";
+import { IoEye } from "react-icons/io5";
+import { IoEyeOff } from "react-icons/io5";
 
 function RegisterPage() {
   const { handleUserRegister } = useAuth();
+  const [password, setPassword] = useState(false);
+  const [Cpassword, setCPassword] = useState(false);
 
   const [credentials, setCredentials] = useState({
     name: "",
@@ -16,6 +20,13 @@ function RegisterPage() {
     let name = e.target.name;
     let value = e.target.value;
     setCredentials({ ...credentials, [name]: value });
+  };
+
+  const handelShowPassword = () => {
+    setPassword(!password);
+  };
+  const handelShowCPassword = () => {
+    setCPassword(!Cpassword);
   };
 
   return (
@@ -59,12 +70,12 @@ function RegisterPage() {
                 />
               </div>
 
-              <div className="field-wrapper flex flex-wrap py-2 px-2 items-center justify-between mx-auto  w-full">
-                <label className="font-semibold uppercase text-white/70  pl-2 pb-2">
+              <div className="field-wrapper relative flex flex-wrap py-2 px-2 items-center justify-between mx-auto  w-full">
+                <label className="font-semibold  text-white/70  pl-2 pb-2">
                   Create Password :{" "}
                 </label>
                 <input
-                  type="password"
+                  type={password ? "text" : "password"}
                   name="password1"
                   required
                   placeholder="Create your Password.."
@@ -72,14 +83,20 @@ function RegisterPage() {
                   value={credentials.password1}
                   onChange={handleChangeInput}
                 />
+                <span
+                  onClick={handelShowPassword}
+                  className="absolute top-12 left-[88%] -translate-x-1 text-white cursor-pointer"
+                >
+                  {password ? <IoEye /> : <IoEyeOff />}
+                </span>
               </div>
 
-              <div className="field-wrapper flex flex-wrap py-2 px-2 items-center justify-between mx-auto  w-full">
-                <label className="font-semibold uppercase text-white/70  pl-2 pb-2">
+              <div className="field-wrapper relative flex flex-wrap py-2 px-2 items-center justify-between mx-auto  w-full">
+                <label className="font-semibold  text-white/70  pl-2 pb-2">
                   Confirm Password :{" "}
                 </label>
                 <input
-                  type="password"
+                  type={Cpassword ? "text" : "password"}
                   name="password2"
                   required
                   placeholder="Confirm  Password.."
@@ -87,6 +104,12 @@ function RegisterPage() {
                   value={credentials.password2}
                   onChange={handleChangeInput}
                 />
+                <span
+                  onClick={handelShowCPassword}
+                  className="absolute top-12 left-[88%] -translate-x-1 text-white cursor-pointer"
+                >
+                  {Cpassword ? <IoEye /> : <IoEyeOff />}
+                </span>
               </div>
 
               <div className="field-wrapper text-right">
