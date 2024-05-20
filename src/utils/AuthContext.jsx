@@ -56,9 +56,9 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await account.create(
         ID.unique(),
-        credentials.name,
         credentials.email,
-        credentials.password1
+        credentials.password1,
+        credentials.name
       );
 
       await account.createEmailSession(
