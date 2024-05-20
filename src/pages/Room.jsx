@@ -103,8 +103,8 @@ function Room() {
     // );
   };
   return (
-    <main className="relative flex min-h-screen flex-col overflow-hidden bg-white/45 py-6 sm:py-12">
-      <div className="relative bg-pink-900 px-10 pb-8 pt-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:w-8/12 md:w-[60%] lg:w-5/12 sm:rounded-lg sm:px-10 ">
+    <main className="container bg-[url('/public/BgImage.svg')] relative flex min-h-screen flex-col overflow-hidden py-6 sm:py-12 bg-cover">
+      <div className="relative bg-pink-900 px-0 pb-8 pt-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:w-8/12 md:w-[60%] lg:w-5/12 sm:rounded-lg sm:px-10 ">
         <div className="mx-auto max-w-xl">
           <div className="space-y-6 text-base leading-7 text-gray-600">
             <div className=" text-white">
